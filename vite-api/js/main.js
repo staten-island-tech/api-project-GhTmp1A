@@ -1,7 +1,6 @@
 import "../styles/style.css";
-import { setupCounter } from "../counter.js";
 
-document.querySelector("#app").innerHTML = `
+/* document.querySelector("#app").innerHTML = `
   <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
@@ -20,3 +19,21 @@ document.querySelector("#app").innerHTML = `
 `;
 
 setupCounter(document.querySelector("#counter"));
+ */
+
+//how promises work
+/* function greet(name) {
+  const greetPromise = new Promise(function (resolve, reject) {
+    resolve(`Hello ${name}`);
+  });
+  return greetPromise;
+}
+
+const suzie = greet("suzie");
+
+suzie.then((result) => {
+  console.log(result);
+});
+ */
+
+api.quotable.io / random;
