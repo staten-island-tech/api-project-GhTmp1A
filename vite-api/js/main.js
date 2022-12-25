@@ -36,9 +36,19 @@ suzie.then((result) => {
 });
  */
 
+const DOMSelectors = {
+  apiout: document.querySelector("#apiout"),
+  display: document.querySelector("#display"),
+};
+
 const URL = "https://api.quotable.io/random";
 
+DOMSelectors.apiout.addEventListener("click", function () {
+  getData(URL);
+});
+
 async function getData(URL) {
+  DOMSelectors.display.innerHTML = "";
   try {
     const response = await fetch(URL);
     const data = await response.json();
@@ -48,5 +58,3 @@ async function getData(URL) {
     console.log(error);
   }
 }
-
-getData(URL);
