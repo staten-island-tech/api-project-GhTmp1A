@@ -37,17 +37,35 @@ suzie.then((result) => {
  */
 
 const DOMSelectors = {
-  apiout: document.querySelector("#apiout"),
+  quoteout: document.querySelector("#quoteout"),
+  dogout: document.querySelector("#dogout"),
   display: document.querySelector("#display"),
 };
 
-const URL = "https://api.quotable.io/random";
+const URLquote = "https://api.quotable.io/random";
+const URLdog = "https://place.dog/300/200";
 
-DOMSelectors.apiout.addEventListener("click", function () {
-  getData(URL);
+DOMSelectors.quoteout.addEventListener("click", function () {
+  getquote(URLquote);
 });
 
-async function getData(URL) {
+DOMSelectors.dogout.addEventListener("click", function () {
+  getdog(URLdog);
+});
+
+async function getquote(URL) {
+  DOMSelectors.display.innerHTML = "";
+  try {
+    const response = await fetch(URL);
+    const data = await response.json();
+    document.getElementById("api-response").textContent = data.content;
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function getdog(URL) {
   DOMSelectors.display.innerHTML = "";
   try {
     const response = await fetch(URL);
