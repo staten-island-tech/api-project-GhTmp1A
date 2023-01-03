@@ -40,10 +40,11 @@ const DOMSelectors = {
   quoteout: document.querySelector("#quoteout"),
   dogout: document.querySelector("#dogout"),
   display: document.querySelector("#display"),
+  img: document.querySelector("#image"),
 };
 
 const URLquote = "https://api.quotable.io/random";
-const URLdog = "https://place.dog/300/200";
+const URLdog = "https://dog.ceo/api/breed/hound/images";
 
 DOMSelectors.quoteout.addEventListener("click", function () {
   getquote(URLquote);
@@ -72,6 +73,7 @@ async function getdog(URL) {
     const data = await response.json();
     document.getElementById("api-response").textContent = data.content;
     console.log(data);
+    DOMSelectors.img.setAttribute("src", data.)
   } catch (error) {
     console.log(error);
   }
