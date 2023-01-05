@@ -43,8 +43,9 @@ const DOMSelectors = {
   img: document.querySelector("#image"),
 };
 
+let topdog = "corgi";
 const URLquote = "https://api.quotable.io/random";
-const URLdog = "https://dog.ceo/api/breed/hound/images";
+const URLdog = `https://dog.ceo/api/breed/hound/images/${topdog}`;
 
 DOMSelectors.quoteout.addEventListener("click", function () {
   getquote(URLquote);
@@ -63,7 +64,7 @@ async function getquote(URL) {
       throw error(response);
     } else {
       const data = await response.json();
-      document.getElementById("api-response").textContent = data.name;
+      document.getElementById("api-response").textContent = data.content;
       console.log(data);
     }
     /*    const data = await response.json();
@@ -86,10 +87,13 @@ async function getdog(URL) {
       throw error(response);
     } else {
       const data = await response.json();
-      document.getElementById("api-response").textContent = data.content;
+      document.getElementById("api-response").innerHTML = data.content;
       console.log(data);
+      DOMSelectors.display.insertAdjacentHTML(
+        "afterend",
+        `<img class= "dogimage" height = "200px" width = "300px" src = ${topdog}>`
+      );
     }
-    DOMSelectors.img.setAttribute("src", img);
   } catch (error) {
     console.log(error);
     console.log("Get outta here fix your code");
@@ -97,3 +101,4 @@ async function getdog(URL) {
       "Out today. Back tommorow.";
   }
 }
+//find way to extract random image
