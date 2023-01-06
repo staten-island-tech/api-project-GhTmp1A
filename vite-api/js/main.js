@@ -45,7 +45,7 @@ const DOMSelectors = {
 
 let topdog = "corgi";
 const URLquote = "https://api.quotable.io/random";
-const URLdog = `https://dog.ceo/api/breed/hound/images/${topdog}`;
+const URLdog = `https://dog.ceo/api/breed/${topdog}/images/`;
 
 DOMSelectors.quoteout.addEventListener("click", function () {
   getquote(URLquote);
@@ -87,12 +87,13 @@ async function getdog(URL) {
       throw error(response);
     } else {
       const data = await response.json();
-      document.getElementById("api-response").innerHTML = data.content;
+      data.message.forEach((img) => {
+        document
+          .getElementById("display")
+          .insertAdjacentElement("afterbegin", `<img src= "${img}" alt ="" >`);
+      });
       console.log(data);
-      DOMSelectors.display.insertAdjacentHTML(
-        "afterend",
-        `<img class= "dogimage" height = "200px" width = "300px" src = ${topdog}>`
-      );
+      console.log(response);
     }
   } catch (error) {
     console.log(error);
