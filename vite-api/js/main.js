@@ -45,7 +45,7 @@ const DOMSelectors = {
 
 let topdog = "corgi";
 const URLquote = "https://api.quotable.io/random";
-const URLdog = `https://dog.ceo/api/breed/${topdog}/images/`;
+const URLdog = `https://www.amiiboapi.com/api/amiibo/?name=${namo}`;
 
 DOMSelectors.quoteout.addEventListener("click", function () {
   getquote(URLquote);
@@ -54,6 +54,34 @@ DOMSelectors.quoteout.addEventListener("click", function () {
 DOMSelectors.dogout.addEventListener("click", function () {
   getdog(URLdog);
 });
+
+async function getdog(URL) {
+  DOMSelectors.display.innerHTML = "";
+  try {
+    const response = await fetch(URL);
+    if (response.status < 200 || response.status > 299) {
+      console.log(response.status);
+      throw error(response);
+    } else {
+      const data = await response.json();
+      data.message.forEach((amiibo) => {
+        amiibo.entry.forEach((figure) => {
+          document.getElementById("display").insertAdjacentHTML("afterbegin");
+        });
+      });
+      console.log(data);
+      console.log(response);
+    }
+  } catch (error) {
+    console.log(error);
+    console.log("Get outta here fix your code");
+    document.getElementById("api-response").textContent =
+      "Out today. Back tommorow.";
+  }
+}
+//find way to extract random image
+
+getdog(URL);
 
 async function getquote(URL) {
   DOMSelectors.display.innerHTML = "";
@@ -77,29 +105,3 @@ async function getquote(URL) {
       "Sorry boss, on my break right now";
   }
 }
-
-async function getdog(URL) {
-  DOMSelectors.display.innerHTML = "";
-  try {
-    const response = await fetch(URL);
-    if (response.status < 200 || response.status > 299) {
-      console.log(response.status);
-      throw error(response);
-    } else {
-      const data = await response.json();
-      data.message.forEach((img) => {
-        document
-          .getElementById("display")
-          .insertAdjacentElement("afterbegin", `<img src= "${img}" alt ="" >`);
-      });
-      console.log(data);
-      console.log(response);
-    }
-  } catch (error) {
-    console.log(error);
-    console.log("Get outta here fix your code");
-    document.getElementById("api-response").textContent =
-      "Out today. Back tommorow.";
-  }
-}
-//find way to extract random image
