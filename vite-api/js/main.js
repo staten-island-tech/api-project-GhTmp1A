@@ -45,17 +45,17 @@ const DOMSelectors = {
 
 let namo = "mario";
 const URLquote = "https://api.quotable.io/random";
-const URLdog = `https://www.amiiboapi.com/api/amiibo/?name=${namo}`;
+const URLamib = `https://www.amiiboapi.com/api/amiibo/?name=${namo}`;
 
 DOMSelectors.quoteout.addEventListener("click", function () {
   getquote(URLquote);
 });
 
 DOMSelectors.dogout.addEventListener("click", function () {
-  getdog(URLdog);
+  getam(URLamib);
 });
 
-async function getdog(URL) {
+async function getam(URL) {
   DOMSelectors.display.innerHTML = "";
   try {
     const response = await fetch(URL);
@@ -64,9 +64,9 @@ async function getdog(URL) {
       throw error(response);
     } else {
       const data = await response.json();
-      amiibo.forEach((element) => {
-        element.forEach((figure) => {
-          document.getElementById("display").insertAdjacentHTML(
+      data.forEach((amiibo) => {
+        amiibo.forEach((figure) => {
+          DOMSelectors.display.insertAdjacentHTML(
             "afterbegin",
             `<div class = "apic">
               <h1> ${figure.character}</h1>
@@ -87,7 +87,7 @@ async function getdog(URL) {
 }
 //find way to extract random image
 
-getdog(URL);
+getam(URLamib);
 
 async function getquote(URL) {
   DOMSelectors.display.innerHTML = "";
