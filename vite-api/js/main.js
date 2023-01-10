@@ -43,7 +43,7 @@ const DOMSelectors = {
   img: document.querySelector("#image"),
 };
 
-let topdog = "corgi";
+let namo = "mario";
 const URLquote = "https://api.quotable.io/random";
 const URLdog = `https://www.amiiboapi.com/api/amiibo/?name=${namo}`;
 
@@ -64,9 +64,15 @@ async function getdog(URL) {
       throw error(response);
     } else {
       const data = await response.json();
-      data.message.forEach((amiibo) => {
-        amiibo.entry.forEach((figure) => {
-          document.getElementById("display").insertAdjacentHTML("afterbegin");
+      amiibo.forEach((element) => {
+        element.forEach((figure) => {
+          document.getElementById("display").insertAdjacentHTML(
+            "afterbegin",
+            `<div class = "apic">
+              <h1> ${figure.character}</h1>
+              <img src= "${figure.image}" alt= "">
+              </div>`
+          );
         });
       });
       console.log(data);
