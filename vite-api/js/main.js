@@ -64,17 +64,20 @@ async function getam(URL) {
       throw error(response);
     } else {
       const data = await response.json();
-      data.forEach((amiibo) => {
-        amiibo.forEach((figure) => {
+      console.log(data);
+      data.filter((amiibo) => (amiibo.name = "Mario"));
+      temp.forEach(
+        (figure) => console.log(figure.name)
+        /* {
           DOMSelectors.display.insertAdjacentHTML(
             "afterbegin",
             `<div class = "apic">
-              <h1> ${figure.character}</h1>
-              <img src= "${figure.image}" alt= "">
-              </div>`
+            <h1> ${figure.character}</h1>
+            <img src= "${figure.image}" alt= "">
+            </div>`
           );
-        });
-      });
+        } */
+      );
       console.log(data);
       console.log(response);
     }
