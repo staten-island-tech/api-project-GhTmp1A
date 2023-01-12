@@ -38,24 +38,25 @@ suzie.then((result) => {
 
 const DOMSelectors = {
   quoteout: document.querySelector("#quoteout"),
-  dogout: document.querySelector("#dogout"),
+  amiout: document.querySelector("#amiout"),
+  input: document.getElementById("input"),
   display: document.querySelector("#display"),
   img: document.querySelector("#image"),
 };
 
-let namo = "mario";
 const URLquote = "https://api.quotable.io/random";
-const URLamib = `https://www.amiiboapi.com/api/amiibo/?name=${namo}`;
+const URLamib = `https://www.amiiboapi.com/api/amiibo/?name=${input}`;
 
 DOMSelectors.quoteout.addEventListener("click", function () {
   getquote(URLquote);
 });
 
-DOMSelectors.dogout.addEventListener("click", function () {
+DOMSelectors.amiout.addEventListener("click", function () {
   getam(URLamib);
 });
 
 async function getam(URL) {
+  let input = DOMSelectors.input.value;
   DOMSelectors.display.innerHTML = "";
   try {
     const response = await fetch(URL);
@@ -65,21 +66,18 @@ async function getam(URL) {
     } else {
       const data = await response.json();
       console.log(data);
-      data.filter((amiibo) => (amiibo.name = "Mario"));
-      temp.forEach(
-        (figure) => console.log(figure.name)
-        /* {
-          DOMSelectors.display.insertAdjacentHTML(
-            "afterbegin",
-            `<div class = "apic">
-            <h1> ${figure.character}</h1>
-            <img src= "${figure.image}" alt= "">
-            </div>`
-          );
-        } */
+      /*       let amongus = data[1];
+      console.log(amongus);
+      console.log(data[0].character); */
+      DOMSelectors.display.insertAdjacentHTML(
+        "afterbegin",
+        `
+        <div class = "card">
+      <h1>${data.amiibo[0].character}</h1>
+        <img src = "${data.amiibo[0].image}">
+      </div>
+      `
       );
-      console.log(data);
-      console.log(response);
     }
   } catch (error) {
     console.log(error);
@@ -89,8 +87,6 @@ async function getam(URL) {
   }
 }
 //find way to extract random image
-
-getam(URLamib);
 
 async function getquote(URL) {
   DOMSelectors.display.innerHTML = "";
