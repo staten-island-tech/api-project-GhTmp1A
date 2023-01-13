@@ -45,24 +45,19 @@ const DOMSelectors = {
 };
 
 const URLquote = "https://api.quotable.io/random";
-const URLamib = `https://www.amiiboapi.com/api/amiibo/?name=${input}`;
 
 DOMSelectors.quoteout.addEventListener("click", function () {
   getquote(URLquote);
 });
 
-DOMSelectors.amiout.addEventListener("click", function () {
-  getam(URLamib);
-});
-
-async function getam(URL) {
-  let input = DOMSelectors.input.value;
+async function getam() {
   DOMSelectors.display.innerHTML = "";
+  let input3 = DOMSelectors.input.value;
+  let URLamib = `https://www.amiiboapi.com/api/amiibo/?name=${input3}`;
   try {
-    const response = await fetch(URL);
+    const response = await fetch(URLamib);
     if (response.status < 200 || response.status > 299) {
       console.log(response.status);
-      throw error(response);
     } else {
       const data = await response.json();
       console.log(data);
@@ -78,6 +73,7 @@ async function getam(URL) {
       </div>
       `
       );
+      DOMSelectors.input.value = "";
     }
   } catch (error) {
     console.log(error);
@@ -86,8 +82,7 @@ async function getam(URL) {
       "Out today. Back tommorow.";
   }
 }
-//find way to extract random image
-
+/* 
 async function getquote(URL) {
   DOMSelectors.display.innerHTML = "";
   try {
@@ -102,7 +97,7 @@ async function getquote(URL) {
     }
     /*    const data = await response.json();
     document.getElementById("api-response").textContent = data.content;
-    console.log(data); */
+    console.log(data); 
   } catch (error) {
     console.log(error);
     console.log("Get outta here fix your code");
@@ -110,3 +105,7 @@ async function getquote(URL) {
       "Sorry boss, on my break right now";
   }
 }
+*/
+DOMSelectors.amiout.addEventListener("click", function () {
+  getam();
+});
