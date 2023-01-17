@@ -37,27 +37,32 @@ suzie.then((result) => {
  */
 
 const DOMSelectors = {
-  quoteout: document.querySelector("#quoteout"),
+  /* quoteout: document.querySelector("#quoteout"), */
   amiout: document.querySelector("#amiout"),
   input: document.getElementById("input"),
   display: document.querySelector("#display"),
   img: document.querySelector("#image"),
 };
 
-const URLquote = "https://api.quotable.io/random";
+/* const URLquote = "https://api.quotable.io/random";
 
 DOMSelectors.quoteout.addEventListener("click", function () {
   getquote(URLquote);
 });
-
+ */
 async function getam() {
   DOMSelectors.display.innerHTML = "";
   let input3 = DOMSelectors.input.value;
   let URLamib = `https://www.amiiboapi.com/api/amiibo/?name=${input3}`;
   try {
     const response = await fetch(URLamib);
+
     if (response.status < 200 || response.status > 299) {
       console.log(response.status);
+      DOMSelectors.display.insertAdjacentHTML(
+        "afterbegin",
+        `<h3 class="unfound">Can't find this amiibo</h3>`
+      );
     } else {
       const data = await response.json();
       console.log(data);
@@ -78,10 +83,14 @@ async function getam() {
   } catch (error) {
     console.log(error);
     console.log("Get outta here fix your code");
-    document.getElementById("api-response").textContent =
-      "Out today. Back tommorow.";
+    document.getElementById("display").innerHTML = "Out today. Back tommorow.";
   }
 }
+
+DOMSelectors.amiout.addEventListener("click", function () {
+  getam();
+});
+
 /* 
 async function getquote(URL) {
   DOMSelectors.display.innerHTML = "";
@@ -106,6 +115,3 @@ async function getquote(URL) {
   }
 }
 */
-DOMSelectors.amiout.addEventListener("click", function () {
-  getam();
-});
