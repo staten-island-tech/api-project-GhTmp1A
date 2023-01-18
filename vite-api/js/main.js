@@ -73,8 +73,8 @@ async function getam() {
         "afterbegin",
         `
         <div class = "card">
-      <h1>${data.amiibo[0].character}</h1>
-        <img src = "${data.amiibo[0].image}">
+      <h1 class="cardtext">${data.amiibo[0].character} alt = "The name of the nintendo character"</h1>
+        <img class="cardimage" src = "${data.amiibo[0].image} alt= "A figure displaying a nintendo character"">
       </div>
       `
       );

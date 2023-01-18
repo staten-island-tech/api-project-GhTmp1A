@@ -96,3 +96,46 @@ button:focus-visible {
   }
 }
  */
+
+ html,
+ body,
+ *{
+     margin:0;
+     padding:0;
+     padding: 0%;
+     margin: 0%;
+     box-sizing: border-box;
+     font-size: 62.5%;
+     text-align: center;
+     font-family: 'Finlandica', sans-serif;
+ }
+
+body {
+
+}
+
+.heading{
+ padding: 30px;
+ 
+}
+
+ .lamiibo, #input {
+  font-size: 5rem;
+
+ }
+
+ .lamiibo{
+  box-sizing: border-box;
+ }
+ .button{
+  font-size: 2.5rem;
+  text-align: center;
+  
+ }
+
+ #display{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+ }
