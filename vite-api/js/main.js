@@ -51,7 +51,6 @@ DOMSelectors.quoteout.addEventListener("click", function () {
 });
  */
 async function getam() {
-  DOMSelectors.display.innerHTML = "";
   let input3 = DOMSelectors.input.value;
   let URLamib = `https://www.amiiboapi.com/api/amiibo/?name=${input3}`;
   try {
@@ -74,7 +73,9 @@ async function getam() {
         `
         <div class = "card">
       <h2 class="cardtext" alt = "The name of the nintendo character">${data.amiibo[0].character} </h2>
+      <h3 class= "cardtype"> Type of Amiibo: ${data.amiibo[0].type}</h3>
         <img alt= "A figure displaying a nintendo character" class="cardimage" src = "${data.amiibo[0].image} ">
+        <h3 class= "cardtype">Released in America: ${data.amiibo[0].release.au}</h3>
       </div>
       `
       );

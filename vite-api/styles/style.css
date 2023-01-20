@@ -115,8 +115,12 @@ body {
 }
 
 .heading{
- padding: 30px;
  
+}
+
+.searcheading{
+  border: solid red 10px;
+  padding: 30px;
 }
 
  .lamiibo, #input {
@@ -132,24 +136,41 @@ scale: 3rem ;
 
  .lamiibo{
   box-sizing: border-box;
+  margin: 30px;
+  
  }
  .button{
-  font-size: 2.5rem;
-  text-align: center;
-  padding: 10px;
-  display: flex;
+  font-size: 50px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 4rem;
+  border: solid red 10px;
+  border-radius: 5px;
  }
 
 .unfound{
   font-size: 4rem;
 }
 
+.cardtype{
+  font-size: 1.5rem;
+}
 
+.card{
+  width: 90rem;
+  max-width: fit-content;
+  margin: 5rem;
+  padding: .75rem ;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
 
  #display{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  
  }
