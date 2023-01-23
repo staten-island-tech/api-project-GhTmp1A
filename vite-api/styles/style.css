@@ -158,13 +158,15 @@ scale: 3rem ;
 }
 
 .card{
-  width: 90rem;
+  width: 900rem;
   max-width: fit-content;
-  margin: 5rem;
-  padding: .75rem ;
+  margin: 7rem;
+  border: solid 5px red;
+  padding: 4rem ;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 
@@ -172,5 +174,5 @@ scale: 3rem ;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+
  }
