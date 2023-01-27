@@ -57,11 +57,24 @@ async function getam() {
     const response = await fetch(URLamib);
 
     if (response.status < 200 || response.status > 299) {
+      DOMSelectors.input.value = "";
       console.log(response.status);
       DOMSelectors.display.insertAdjacentHTML(
         "afterbegin",
-        `<h3 class="unfound">Can't find this amiibo</h3>`
+        `<div id= "noamiibo">
+        <h3 class="unfound">Can't find this amiibo</h3>
+        <button type="button" id="errorbutton" class= "button"> <label for="Deleting the given card" class="deletelabel"> Delete </label></button>
+        </div>
+        `
       );
+      DOMSelectors.input.value = "";
+
+      let rnoamiibo = document.getElementById("noamiibo");
+      let removederror = document.getElementById("errorbutton");
+
+      removederror.addEventListener("click", function () {
+        rnoamiibo.remove();
+      });
     } else {
       const data = await response.json();
       console.log(data);
@@ -71,15 +84,27 @@ async function getam() {
       DOMSelectors.display.insertAdjacentHTML(
         "afterbegin",
         `
-        <div class = "card">
+        <div class = "card" id = "rcard">
+        <div class = "info">
+
       <h2 class="cardtext" alt = "The name of the nintendo character">${data.amiibo[0].character} </h2>
       <h3 class= "cardtype"> Type of Amiibo: ${data.amiibo[0].type}</h3>
         <img alt= "A figure displaying a nintendo character" class="cardimage" src = "${data.amiibo[0].image} ">
+
         <h3 class= "cardtype">Released in America: ${data.amiibo[0].release.au}</h3>
+        </div>
+        <button type="button" id="rbutton" class= "button"> <label for="Deleting the given card" class="deletelabel"> Delete </label></button>
       </div>
       `
       );
       DOMSelectors.input.value = "";
+
+      let removed = document.getElementById("rbutton");
+      let rcard = document.getElementById("rcard");
+
+      removed.addEventListener("click", function () {
+        rcard.remove();
+      });
     }
   } catch (error) {
     console.log(error);

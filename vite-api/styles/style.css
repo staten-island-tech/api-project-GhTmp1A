@@ -115,64 +115,155 @@ body {
 }
 
 .heading{
- 
+  background-color: white ;
+  padding: 4rem;
+  border-bottom: solid black 3px;
 }
 
 .searcheading{
-  border: solid red 10px;
   padding: 30px;
 }
 
+.lamiibo{
+color: black;
+ }
+
+
+ 
  .lamiibo, #input {
   font-size: 5rem;
  }
 
-.cardtext{
-  font-size: 3rem;
-}
- .cardimage{
-scale: 3rem ;
- }
 
- .lamiibo{
-  box-sizing: border-box;
-  margin: 30px;
-  
- }
+
  .button{
   font-size: 50px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin: 4rem;
-  border: solid red 10px;
+  
+  margin: 1rem;
+  color: white;
+  background-color: var(--primary) ;
+  justify-content: center;
+  border: var(--primary) ; 
   border-radius: 5px;
+  transition: 0.2s;
+ }
+
+
+
+
+ .enterlabel{
+  padding: 1rem;
+  display: flex;
+ }
+
+ .deletelabel{
+  padding: .5rem  ;
+  display: flex;
  }
 
 .unfound{
   font-size: 4rem;
 }
 
-.cardtype{
-  font-size: 1.5rem;
+#noamiibo{
+  margin: 2rem;
+}
+
+#errorbutton{
+  background-color: black;
+}
+
+
+
+.info{
+  margin: 1rem;
 }
 
 .card{
   width: 900rem;
   max-width: fit-content;
-  margin: 7rem;
-  border: solid 5px red;
-  padding: 4rem ;
+  margin: 5rem;
+  border: solid 5px var(--primary) ;
+  border-radius: 10px;
+  padding: 2rem ;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  justify-content: center;
   align-items: center;
+  background: white;
+  transition: ease-in .2s;
+/*   background-image: url("https://cdn.discordapp.com/attachments/789594843545731103/1068555140820369460/Amiibo_background.png") ;
+  background-size: 10rem;
+  background-repeat: repeat;
+  background-position: center 25px;
+opacity: .3; */
 }
 
+.cardtype{
+  font-size: 1.5rem;
+}
+
+
+.cardtext{
+  font-size: 3rem;
+}
+ .cardimage{
+scale: 3rem ;
+position: relative;
+ }
+
+/*   .cardbackground{
+  width: 20rem;
+  border: solid red 10px;
+  position: absolute;
+  z-index: -1;
+  overflow: hidden;
+ } */
+ 
  #display{
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-
+  flex-wrap: wrap;  
+  overflow: hidden;
+  position: relative;
  }
+
+#displayimage{
+  width: 200rem;
+  opacity: .4;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: auto;
+  z-index: -1;
+  transition: all  .2s;
+}
+
+ .button:hover{
+  transform: scale(1.2);
+  background-color: var(--tdarkred);
+   }
+
+
+.card:hover ~ #displayimage {
+  opacity: .8;
+  transform: scale(1.05);
+}
+
+.card:hover{
+  box-shadow: var(--tdarkred) 2rem 2rem 3px;
+  translate: (0, -5px)  ;
+}
+
+ :root {
+  --tred: #F30B0B;
+  --tdarkred: #d60b0b;
+  /* Intentions */
+  --primary: var(--tred) ;
+  --secondary: var(--tdarkred);
+ }
+
+.RED{
+  --primary: var(--tred) ;
+  --secondary: var(--tdarkred);
+}
