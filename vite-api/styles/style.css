@@ -230,7 +230,9 @@ position: relative;
   position: relative;
  }
 
-
+.footer{
+  font-size: 2rem;
+}
 
 /* #displayimage{
   width: 500rem;
