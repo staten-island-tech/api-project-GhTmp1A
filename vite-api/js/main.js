@@ -87,11 +87,11 @@ async function getam() {
         <div class = "card" id = "rcard">
         <div class = "info">
 
-      <h2 class="cardtext" alt = "The name of the nintendo character">${data.amiibo[0].character} </h2>
-      <h3 class= "cardtype"> Type of Amiibo: ${data.amiibo[0].type}</h3>
-        <img alt= "A figure displaying a nintendo character" class="cardimage" src = "${data.amiibo[0].image} ">
+      <h2 class="cardText" alt = "The name of the nintendo character">${data.amiibo[0].character} </h2>
+      <h3 class= "cardType"> Type of Amiibo: ${data.amiibo[0].type}</h3>
+        <img alt= "A figure displaying a nintendo character" class="cardImage" src = "${data.amiibo[0].image} ">
 
-        <h3 class= "cardtype">Released in America: ${data.amiibo[0].release.au}</h3>
+        <h3 class= "cardRelease">Released in America: ${data.amiibo[0].release.na} 
         </div>
         <button type="button" id="rbutton" class= "button"> <label for="Deleting the given card" class="deletelabel"> Delete </label></button>
       </div>
