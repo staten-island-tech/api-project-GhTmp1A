@@ -228,8 +228,10 @@ position: relative;
   position: relative;
  }
 
-#displayimage{
-  width: 200rem;
+
+
+/* #displayimage{
+  width: 500rem;
   opacity: .4;
   position: absolute;
   left: 0;
@@ -237,7 +239,8 @@ position: relative;
   height: auto;
   z-index: -1;
   transition: all  .2s;
-}
+ background-repeat: repeat;
+} */
 
  .button:hover{
   transform: scale(1.2);
@@ -245,14 +248,18 @@ position: relative;
    }
 
 
-.card:hover ~ #displayimage {
+/* .card:hover ~ #displayimage {
   opacity: .8;
   transform: scale(1.05);
-}
+} */
 
 .card:hover{
   box-shadow: var(--tdarkred) 2rem 2rem 3px;
   translate: (0, -5px)  ;
+}
+
+.card:hover ~ #display {
+
 }
 
  :root {
