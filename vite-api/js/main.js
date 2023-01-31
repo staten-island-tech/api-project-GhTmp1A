@@ -38,7 +38,7 @@ suzie.then((result) => {
 
 const DOMSelectors = {
   /* quoteout: document.querySelector("#quoteout"), */
-  amiout: document.querySelector("#amiout"),
+  amiout: document.querySelector("#amiOut"),
   input: document.getElementById("input"),
   display: document.querySelector("#display"),
   img: document.querySelector("#image"),
@@ -116,6 +116,47 @@ async function getam() {
 DOMSelectors.amiout.addEventListener("click", function () {
   getam();
 });
+
+async function getmar() {
+  DOMSelectors.input.value = "Mario";
+  let input2 = DOMSelectors.input.value;
+  let URLmar = `https://www.amiiboapi.com/api/amiibo/?name=${input2}`;
+  try {
+    const response = await fetch(URLmar);
+    {
+      const data1 = await response.json();
+      console.log(data1);
+      /*       let amongus = data[1];
+      console.log(amongus);
+      console.log(data[0].character); */
+      DOMSelectors.display.insertAdjacentHTML(
+        "afterbegin",
+        `
+        <div class = "card" id = "rcard">
+        <div class = "info">
+        <h2 class="cardIntro" alt ="A description of the website"> Here is an example of what happens when you type "mario" into the search bar. Try it yourself!</h2> </h2>
+      <h2 class="cardText" alt = "The name of the nintendo character">${data1.amiibo[0].character} </h2>
+      <h3 class= "cardType"> Type of Amiibo: ${data1.amiibo[0].type}</h3>
+        <img alt= "A figure displaying a nintendo character" class="cardImage" src = "${data1.amiibo[0].image} ">
+
+        <h3 class= "cardRelease">Released in America: ${data1.amiibo[0].release.na}
+        </div>
+        <button type="button" id="rbutton" class= "button"> <label for="Deleting the given card" class="deletelabel"> Delete </label></button>
+      </div>
+      `
+      );
+
+      let removed = document.getElementById("rbutton");
+      let rcard = document.getElementById("rcard");
+
+      removed.addEventListener("click", function () {
+        rcard.remove();
+      });
+    }
+  } catch (error) {}
+}
+
+getmar();
 
 /* 
 async function getquote(URL) {
